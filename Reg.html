@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Page</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="file.js">
+</head>
+<body>
+    <h1 class="blink">1,00,00,000 
+    </h1>
+    <h2 class="core">  CRORE CASH FOR YOU</h2>
+    <div class="offer-box">
+        <p class="bling">HURRY!!!! <br>LIMITED TIME OFFER.</p>
+    </div>
+    <div class="container">
+        <!-- First container for form elements -->
+        <div class="form-container">
+            <h1 class="reg">Register</h1>
+            <form action="#">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" class="input-box" id="name" name="name" required>
+                    <span id="nameError" class="error-message"></span>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" class="input-box" id="email" name="email" required>
+                    <span id="emailError" class="error-message"></span>
+                </div>
+                 
+                <br>
+
+                <div class="form-group">
+                    <label for="ID">Account ID:</label>
+                    <input type="text" class="input-box" id="ID" name="ID" required>
+                    <span id="IDError" class="error-message"></span>
+                </div>
+                 <br> 
+                <button class="btn" type="button" onclick="validateForm()">Register</button>
+            </form>
+        </div>
+
+        <!-- Display notification -->
+        <div id="notification">
+            <div id="successMessage"></div>
+            <button id="okButton" onclick="hideNotification()">OK</button>
+        </div>
+ 
+        <!-- Second container for info -->
+        <div class="info-container">
+            <div class="info">
+                <div class="welcome-container"> <br> <br> <br> <br> <br> <br> <br> 
+                    <h3 class="welcome-title">Welcome <br> </h3>
+                    <h3 class="sub-heading">Embark on a journey to master Forex trading! <br> <br><br> <br> <br> <br> <br><br> </h3>
+                </div>
+                <!-- Your content goes here -->
+            </div>
+        </div>
+    </div>
+    <!-- Display notification -->
+<div id="notification" style="display:none;">
+    <div id="successMessage"></div>
+    <button id="okButton" onclick="hideNotification()">OK</button>
+</div>
+<script>
+    function validateForm() {
+        // Get the value of the name, email, and ID inputs
+        var nameInput = document.getElementById('name').value;
+        var emailInput = document.getElementById('email').value;
+        var IDInput = document.getElementById('ID').value;
+        // Get the error message elements
+        var nameError = document.getElementById('nameError');
+        var emailError = document.getElementById('emailError');
+        var IDError = document.getElementById('IDError');
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    
+        // Check if the name is empty
+        if (nameInput.trim() === '') {
+            // Display error message
+            nameError.textContent = 'Please fill your name';
+        } else {
+            // Clear error message if name is not empty
+            nameError.textContent = '';
+        }
+    
+        // Check if the ID is empty
+        if (IDInput.trim() === '') {
+            // Display error message
+            IDError.textContent = 'Please fill your ID';
+        } else {
+            // Clear error message if ID is not empty
+            IDError.textContent = '';
+        }
+    
+        // Check if the email is empty or not valid
+        if (emailInput.trim() === '') {
+            // Display error message for empty email
+            emailError.textContent = 'Please fill your email';
+        } else if (!emailRegex.test(emailInput)) {
+            // Display error message for invalid email format
+            emailError.textContent = 'Please enter a valid email';
+            return true; // Returning true to indicate an error
+        } else {
+            // Clear error message if email is valid
+            emailError.textContent = '';
+        }
+    
+        // Perform other registration actions if needed
+        if (nameInput.trim() !== '' && emailInput.trim() !== '' && IDInput.trim() !== '') {
+            message("Done!!");
+        }
+    }
+    
+    // Define the message function
+    function message(msg) {
+        // Update the successMessage content
+        document.getElementById('successMessage').textContent = msg;
+        // Show the notification
+        document.getElementById('notification').style.display = 'block';
+    }
+    
+    // Define the hideNotification function
+    function hideNotification() {
+        // Hide the notification
+        document.getElementById('notification').style.display = 'none';
+    }
+    </script>
+    </body>
+</html>
